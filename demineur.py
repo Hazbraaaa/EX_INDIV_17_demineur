@@ -10,6 +10,15 @@ hidden = 'O'
 
 # init functions
 
+def launcher():
+    print("Enter a number of rows :")
+    row = int(input())
+    print("Enter a number of columns:")
+    col = int(input())
+    print("\nThe game begin ! Enjoy !\n")
+    game(row, col)
+    
+
 def game(row, col):
     gridToSolve = createGridToSolve(row, col)
 
@@ -22,14 +31,16 @@ def game(row, col):
         rowTried = int(input()) - 1
         print(f"Enter col (between 1 and {col}):")
         colTried = int(input()) - 1
+        print('')
         gridYouSee[rowTried][colTried] = gridToSolve[rowTried][colTried]
         if gridToSolve[rowTried][colTried] == mine:
             break
         answer += 1
         showGrid(gridYouSee)
+    print("You've step on a mine...\n")
     showGrid(gridYouSee)
-    
 
+    
 def createGridToSolve(row, col):
     count = 0
     nbOfMine = calculcateNbOfMine(row, col)
@@ -47,6 +58,7 @@ def createGridToSolve(row, col):
         if grid[randomRow][randomCol] == empty:
             grid[randomRow][randomCol] = mine
             count += 1
+
     return grid
 
 def createGridYouSee(row, col):
@@ -73,4 +85,4 @@ def calculcateNbOfMine(row, col):
 
 # execute code
 
-game(4, 4)
+launcher()
